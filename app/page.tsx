@@ -2,6 +2,7 @@ import ProjectCard from "@/components/ProjectCard";
 import { aiProjects, gameProjects } from "@/data/projects";
 import AnimatedWords from "@/components/AnimatedWords";
 import TimelineSection from "@/components/TimelineSection";
+import ContactSection from "@/components/ContactSection";
 
 export default function HomePage() {
   return (
@@ -31,6 +32,24 @@ export default function HomePage() {
                 I enjoy <AnimatedWords /> intelligent digital systems combining
                 artificial intelligence, game development, and automation.
               </p>
+
+              <div className="mt-8 flex flex-wrap gap-4">
+                <a
+                  href="https://github.com/anaxrdonez"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center rounded-full border border-neutral-300 bg-white px-6 py-3 text-sm font-semibold text-neutral-900 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+                >
+                  View GitHub
+                </a>
+
+                <a
+                  href="#contact"
+                  className="inline-flex items-center justify-center rounded-full border border-violet-200 bg-violet-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-violet-700 hover:shadow-md"
+                >
+                  Contact Me
+                </a>
+              </div>
             </div>
 
             <div className="flex flex-col items-center gap-6 lg:items-start">
@@ -54,12 +73,14 @@ export default function HomePage() {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <span aria-hidden="true">📱</span>
+                  <span aria-hidden="true">💼</span>
                   <a
-                    href="tel:+34652283140"
+                    href="https://github.com/anaxrdonez"
+                    target="_blank"
+                    rel="noreferrer"
                     className="transition hover:text-black"
                   >
-                    +34 652 283 140
+                    GitHub Profile
                   </a>
                 </div>
               </div>
@@ -94,7 +115,7 @@ export default function HomePage() {
         </section>
 
         {/* GAME PROJECTS */}
-        <section id="games" className="mb-20">
+        <section id="games" className="mb-24">
           <div className="mb-8">
             <div className="mb-3 inline-flex rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-sm font-medium text-emerald-700">
               Games
@@ -116,6 +137,8 @@ export default function HomePage() {
             ))}
           </div>
         </section>
+
+        <ContactSection />
       </div>
     </main>
   );
