@@ -3,6 +3,9 @@ import { aiProjects, gameProjects } from "@/data/projects";
 import AnimatedWords from "@/components/AnimatedWords";
 import TimelineSection from "@/components/TimelineSection";
 import ContactSection from "@/components/ContactSection";
+import { Github, Linkedin } from "lucide-react";
+import SocialButton from "@/components/SocialButton";
+
 
 export default function HomePage() {
   return (
@@ -34,27 +37,23 @@ export default function HomePage() {
               </p>
 
               <div className="mt-8 flex flex-wrap gap-4">
-                <a
+                <SocialButton
                   href="https://github.com/anaxrdonez"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center justify-center rounded-full border border-neutral-300 bg-white px-6 py-3 text-sm font-semibold text-neutral-900 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+                  icon={<Github size={18} strokeWidth={2} />}
                 >
-                  View GitHub
-                </a>
+                  GitHub
+                </SocialButton>
 
-                <a
-                  href="https://www.linkedin.com/in/ana-ordóñez-gragera-677311298"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center justify-center rounded-full border border-neutral-300 bg-white px-6 py-3 text-sm font-semibold text-neutral-900 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+                <SocialButton
+                  href="https://www.linkedin.com/in/ana-ord%C3%B3%C3%B1ez-gragera-677311298"
+                  icon={<Linkedin size={18} strokeWidth={2} />}
                 >
                   LinkedIn
-                </a>
+                </SocialButton>
 
                 <a
                   href="#contact"
-                  className="inline-flex items-center justify-center rounded-full border border-violet-200 bg-violet-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-violet-700 hover:shadow-md"
+                  className="inline-flex items-center justify-center rounded-full border border-violet-200 bg-violet-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:bg-violet-700 hover:shadow-lg"
                 >
                   Contact Me
                 </a>

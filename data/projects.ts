@@ -2,21 +2,21 @@ export const aiProjects = [
   {
     slug: "uncertainty-metrics",
     title: "Uncertainty Metrics Lab",
-    image: "/Assets/uncertainty-metrics.png",
+    // image: "/Assets/uncertainty-metrics.png",
     description:
       "Hands-on lab exploring practical uncertainty signals for multiclass classification.",
   },
   {
     slug: "cv-evaluator-llm",
     title: "CV Evaluator LLM",
-    image: "/Assets/cv-evaluator-llm.png",
+    // image: "/Assets/cv-evaluator-llm.png",
     description:
       "LLM pipeline that evaluates resumes against a role and returns structured feedback.",
   },
   {
     slug: "meeting-minutes-generator",
     title: "Meeting Minutes Generator",
-    image: "/Assets/meeting-minutes-generator.png",
+    // image: "/Assets/meeting-minutes-generator.png",
     description:
       "LangGraph workflow that converts transcripts into structured meeting minutes and action items.",
   },
