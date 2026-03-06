@@ -156,12 +156,12 @@ export default function ContactSection() {
               GitHub
             </p>
             <a
-              href="https://github.com/TU_USUARIO_GITHUB"
+              href="https://github.com/anaxrdonez"
               target="_blank"
               rel="noreferrer"
               className="mt-1 inline-block text-lg font-medium transition hover:text-black"
             >
-              github.com/TU_USUARIO_GITHUB
+              github.com/anaxrdonez
             </a>
           </div>
 

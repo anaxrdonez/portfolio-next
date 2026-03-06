@@ -44,6 +44,15 @@ export default function HomePage() {
                 </a>
 
                 <a
+                  href="https://www.linkedin.com/in/ana-ordóñez-gragera-677311298"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center rounded-full border border-neutral-300 bg-white px-6 py-3 text-sm font-semibold text-neutral-900 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+                >
+                  LinkedIn
+                </a>
+
+                <a
                   href="#contact"
                   className="inline-flex items-center justify-center rounded-full border border-violet-200 bg-violet-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-violet-700 hover:shadow-md"
                 >
@@ -59,30 +68,6 @@ export default function HomePage() {
                   alt="Ana Ordóñez"
                   className="h-56 w-56 object-cover md:h-64 md:w-64"
                 />
-              </div>
-
-              <div className="space-y-3 text-sm text-neutral-700 md:text-base">
-                <div className="flex items-center gap-3">
-                  <span aria-hidden="true">📧</span>
-                  <a
-                    href="mailto:anaordonez.prac@gmail.com"
-                    className="transition hover:text-black"
-                  >
-                    anaordonez.prac@gmail.com
-                  </a>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <span aria-hidden="true">💼</span>
-                  <a
-                    href="https://github.com/anaxrdonez"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="transition hover:text-black"
-                  >
-                    GitHub Profile
-                  </a>
-                </div>
               </div>
             </div>
           </div>
