@@ -1,6 +1,7 @@
 import ProjectCard from "@/components/ProjectCard";
 import { aiProjects, gameProjects } from "@/data/projects";
 import AnimatedWords from "@/components/AnimatedWords";
+import TimelineSection from "@/components/TimelineSection";
 
 export default function HomePage() {
   return (
@@ -65,6 +66,8 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+
+        <TimelineSection />
 
         {/* AI PROJECTS */}
         <section id="projects" className="mb-24">
