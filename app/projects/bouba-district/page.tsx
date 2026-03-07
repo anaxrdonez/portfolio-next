@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import SpeakerParticles from "@/components/SpeakerParticles";
 
 const enemyCards = [
   {
@@ -73,6 +76,24 @@ const gameplayShots = [
   "/Assets/boubaDistrict/4.png",
 ];
 
+const howToPlaySteps = [
+  {
+    title: "Follow the beat",
+    description:
+      "Listen to the music and keep track of the rhythm pattern during each encounter.",
+  },
+  {
+    title: "Press the right buttons",
+    description:
+      "Hit the correct keys at the right moment to perform attacks and maintain your combo.",
+  },
+  {
+    title: "Defeat the Boubas",
+    description:
+      "Successful rhythmic inputs turn the band’s performance into attacks that defeat the Bouba enemies and protect the district.",
+  },
+];
+
 const gifs = [
   { title: "Dance", image: "/Assets/boubaDistrict/dance.gif" },
   { title: "Punch", image: "/Assets/boubaDistrict/punch.gif" },
@@ -82,7 +103,11 @@ const gifs = [
 
 export default function BoubaDistrictPage() {
   return (
-    <main className="mx-auto max-w-6xl px-6 py-16">
+    <main className="relative min-h-screen overflow-hidden">
+      <SpeakerParticles />
+      
+      <div className="relative z-10 mx-auto max-w-6xl px-6 py-16">
+
       <Link
         href="/#games"
         className="mb-8 inline-flex items-center gap-2 rounded-full border border-neutral-300 bg-white/80 px-4 py-2 text-sm font-medium text-neutral-700 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:bg-white hover:text-neutral-900"
@@ -91,57 +116,53 @@ export default function BoubaDistrictPage() {
         <span>Back</span>
       </Link>
 
-      <section className="overflow-hidden rounded-[2rem] border border-neutral-200 bg-gradient-to-br from-fuchsia-900 via-violet-900 to-slate-900 text-white shadow-lg">
-        <div className="border-b border-white/10">
-          <video
-            autoPlay
-            loop
-            controls
-            className="max-h-[480px] w-full object-cover"
-          >
-            <source src="/Assets/boubaDistrict/trailer.mp4" type="video/mp4" />
-            Your browser does not support the video.
-          </video>
-        </div>
+      <section className="overflow-hidden rounded-[2rem] border border-neutral-200 bg-gradient-to-br from-fuchsia-900 via-violet-900 to-slate-900 px-8 py-14 text-white shadow-lg md:px-12 md:py-16">
+        <div className="max-w-3xl">
+          <div className="mb-4 inline-flex rounded-full border border-white/15 bg-white/10 px-3 py-1 text-sm font-medium text-fuchsia-100">
+            Rhythm Combat Game
+          </div>
 
-        <div className="px-8 py-12 md:px-12">
-          <div className="max-w-3xl">
-            <div className="mb-4 inline-flex rounded-full border border-white/15 bg-white/10 px-3 py-1 text-sm font-medium text-fuchsia-100">
-              Rhythm / Action Game
-            </div>
+          <h1 className="text-4xl font-bold tracking-tight md:text-6xl">
+            Bouba District
+          </h1>
 
-            <h1 className="text-4xl font-bold tracking-tight md:text-6xl">
-              Bouba District
-            </h1>
+          <p className="mt-4 max-w-2xl text-lg leading-8 text-neutral-200">
+            A rhythm-based action game where players press buttons in time with
+            the music to attack and defeat the Bouba enemies threatening the
+            city.
+          </p>
 
-            <p className="mt-4 max-w-2xl text-lg leading-8 text-neutral-200">
-              A musical competitive game that blends action, rhythm, and a
-              playful world where a boyband fights back using the power of
-              music.
-            </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a
+              href="https://syncstudios-games.itch.io/bouba-district"
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-xl bg-white px-5 py-3 text-sm font-semibold text-neutral-900 shadow-sm transition hover:-translate-y-0.5 hover:bg-neutral-100"
+            >
+              Play on Itch.io
+            </a>
 
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href="https://syncstudios-games.itch.io/bouba-district"
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-xl bg-white px-5 py-3 text-sm font-semibold text-neutral-900 shadow-sm transition hover:-translate-y-0.5 hover:bg-neutral-100"
-              >
-                Play on Itch.io
-              </a>
+            <a
+              href="#how-to-play"
+              className="rounded-xl border border-white/20 bg-white/10 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/15"
+            >
+              How to Play
+            </a>
 
-              <a
-                href="#about"
-                className="rounded-xl border border-white/20 bg-white/10 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/15"
-              >
-                Discover more
-              </a>
-            </div>
+            <a
+              href="#trailer"
+              className="rounded-xl border border-white/20 bg-white/10 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/15"
+            >
+              Watch Trailer
+            </a>
           </div>
         </div>
       </section>
 
-      <section id="about" className="mt-10 rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm">
+      <section
+        id="about"
+        className="mt-10 rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm"
+      >
         <div className="mb-6">
           <div className="mb-3 inline-flex rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-sm font-medium text-neutral-700">
             Introduction
@@ -150,9 +171,10 @@ export default function BoubaDistrictPage() {
             What is Bouba District?
           </h2>
           <p className="mt-3 max-w-4xl leading-7 text-neutral-600">
-            Bouba District is a competitive music game that combines action and
-            rhythm mechanics. Players fight waves of cute but dangerous
-            creatures by following the beat and entering precise key sequences.
+            Bouba District is a rhythm game with action-driven combat. Players
+            must react to the music, press the correct buttons at the right
+            time, and use rhythm as a weapon to defeat waves of cute but
+            dangerous Bouba creatures.
           </p>
         </div>
 
@@ -176,7 +198,7 @@ export default function BoubaDistrictPage() {
 
             <div className="rounded-2xl border border-fuchsia-200 bg-fuchsia-50 p-5">
               <p className="text-lg font-medium text-fuchsia-800">
-                Our boys definitely know how to bring the rhythm.
+                Music is not just style here — it is the way you fight back.
               </p>
             </div>
           </div>
@@ -194,39 +216,114 @@ export default function BoubaDistrictPage() {
         </div>
       </section>
 
-        <section className="mt-10 rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm">
+      <section
+        id="how-to-play"
+        className="mt-10 rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm"
+      >
+        <div className="mb-6">
+          <div className="mb-3 inline-flex rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-sm font-medium text-neutral-700">
+            How to Play
+          </div>
+          <h2 className="text-3xl font-bold tracking-tight text-neutral-900">
+            Feel the rhythm, hit the buttons, defeat the Boubas
+          </h2>
+          <p className="mt-3 max-w-4xl leading-7 text-neutral-600">
+            Bouba District is a rhythm game in which the player must press the
+            correct buttons in sync with the music. Every successful input turns
+            the band’s performance into an attack, helping you defeat the Bouba
+            enemies and protect the district.
+          </p>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-3">
+          {howToPlaySteps.map((step, index) => (
+            <article
+              key={step.title}
+              className="rounded-3xl border border-neutral-200 bg-neutral-50 p-6 shadow-sm transition hover:-translate-y-1 hover:bg-white hover:shadow-md"
+            >
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-fuchsia-100 text-lg font-bold text-fuchsia-700">
+                {index + 1}
+              </div>
+
+              <h3 className="text-xl font-semibold text-neutral-900">
+                {step.title}
+              </h3>
+
+              <p className="mt-3 leading-7 text-neutral-600">
+                {step.description}
+              </p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section
+        id="trailer"
+        className="mt-10 rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm"
+      >
+        <div className="mb-6">
+          <div className="mb-3 inline-flex rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-sm font-medium text-neutral-700">
+            Trailer
+          </div>
+          <h2 className="text-3xl font-bold tracking-tight text-neutral-900">
+            Watch the game in action
+          </h2>
+          <p className="mt-3 max-w-4xl leading-7 text-neutral-600">
+            A quick look at the musical combat, visual style, and overall energy
+            of Bouba District.
+          </p>
+        </div>
+
+        <div className="overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-950 shadow-sm">
+          <video
+            autoPlay
+            loop
+            controls
+            className="max-h-[560px] w-full object-cover"
+          >
+            <source src="/Assets/boubaDistrict/trailer.mp4" type="video/mp4" />
+            Your browser does not support the video.
+          </video>
+        </div>
+      </section>
+
+      <section className="mt-10 rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm">
         <div className="grid gap-6 md:grid-cols-[1.4fr_1fr] md:items-center">
-            <div>
+          <div>
             <div className="mb-3 inline-flex rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-sm font-medium text-neutral-700">
-                Art Book
+              Art Book
             </div>
             <h2 className="text-3xl font-bold tracking-tight text-neutral-900">
-                Explore the project book
+              Explore the project book
             </h2>
             <p className="mt-3 max-w-2xl leading-7 text-neutral-600">
-                Click the book cover to open the interactive flipbook and explore the
-                concept, visuals, and development material behind Bouba District.
+              Click the book cover to open the interactive flipbook and explore
+              the concept, visuals, and development material behind Bouba
+              District.
             </p>
-            </div>
+          </div>
 
-            <a
+          <a
             href="https://heyzine.com/flip-book/b6a276aead.html"
             target="_blank"
             rel="noreferrer"
             className="group mx-auto block max-w-[220px]"
-            >
+          >
             <div className="overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-50 shadow-sm transition group-hover:-translate-y-1 group-hover:shadow-md">
-                <img
+              <img
                 src="/Assets/boubaDistrict/P2.jpg"
                 alt="Bouba District art book cover"
                 className="h-auto w-full object-contain"
-                />
+              />
             </div>
-            </a>
+          </a>
         </div>
-        </section>
+      </section>
 
-      <section id="concept" className="mt-10 rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm">
+      <section
+        id="concept"
+        className="mt-10 rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm"
+      >
         <div className="mb-3 inline-flex rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-sm font-medium text-neutral-700">
           Concept
         </div>
@@ -240,7 +337,10 @@ export default function BoubaDistrictPage() {
         </p>
       </section>
 
-      <section id="story" className="mt-10 rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm">
+      <section
+        id="story"
+        className="mt-10 rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm"
+      >
         <div className="mb-6">
           <div className="mb-3 inline-flex rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-sm font-medium text-neutral-700">
             Story & Enemies
@@ -318,7 +418,10 @@ export default function BoubaDistrictPage() {
         </div>
       </section>
 
-      <section id="gallery" className="mt-10 rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm">
+      <section
+        id="gallery"
+        className="mt-10 rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm"
+      >
         <div className="mb-6">
           <div className="mb-3 inline-flex rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-sm font-medium text-neutral-700">
             Gallery
@@ -334,7 +437,11 @@ export default function BoubaDistrictPage() {
               key={src}
               className="overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-50 shadow-sm"
             >
-              <img src={src} alt="Bouba District gallery" className="h-64 w-full object-cover" />
+              <img
+                src={src}
+                alt="Bouba District gallery"
+                className="h-64 w-full object-cover"
+              />
             </div>
           ))}
         </div>
@@ -390,7 +497,10 @@ export default function BoubaDistrictPage() {
         </div>
       </section>
 
-      <section id="videos" className="mt-10 rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm">
+      <section
+        id="videos"
+        className="mt-10 rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm"
+      >
         <div className="mb-6">
           <div className="mb-3 inline-flex rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-sm font-medium text-neutral-700">
             Gameplay Videos
@@ -425,7 +535,10 @@ export default function BoubaDistrictPage() {
             </h3>
             <div className="overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-950 shadow-sm">
               <video controls className="w-full">
-                <source src="/Assets/boubaDistrict/Tutorial.mp4" type="video/mp4" />
+                <source
+                  src="/Assets/boubaDistrict/Tutorial.mp4"
+                  type="video/mp4"
+                />
                 Your browser does not support the video.
               </video>
             </div>
@@ -436,7 +549,10 @@ export default function BoubaDistrictPage() {
         </div>
       </section>
 
-      <section id="novedades" className="mt-10 rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm">
+      <section
+        id="novedades"
+        className="mt-10 rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm"
+      >
         <div className="mb-6">
           <div className="mb-3 inline-flex rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-sm font-medium text-neutral-700">
             News
@@ -487,7 +603,10 @@ export default function BoubaDistrictPage() {
         </div>
       </section>
 
-      <section id="contact" className="mt-10 rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm">
+      <section
+        id="contact"
+        className="mt-10 rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm"
+      >
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
             <div className="mb-3 inline-flex rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-sm font-medium text-neutral-700">
@@ -510,6 +629,7 @@ export default function BoubaDistrictPage() {
           </a>
         </div>
       </section>
+      </div>
     </main>
   );
 }

@@ -48,3 +48,154 @@ body {
 }
 
 
+
+/* ============================== */
+/*  CYBER / SPOTIFY / BEAT SABER  */
+/* ============================== */
+
+.cyber-grid,
+.cyber-glow,
+.beat-ring {
+  position: absolute;
+  inset: 0;
+}
+
+.cyber-grid {
+  background-image:
+    linear-gradient(rgba(217, 70, 239, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(217, 70, 239, 0.05) 1px, transparent 1px);
+  background-size: 90px 90px;
+  mask-image: radial-gradient(circle at center, black 45%, transparent 95%);
+  opacity: 0.45;
+  animation: gridDrift 18s linear infinite;
+}
+
+.cyber-glow {
+  border-radius: 9999px;
+  filter: blur(60px);
+  animation: glowPulse 4.4s ease-in-out infinite;
+}
+
+.cyber-glow-1 {
+  width: 720px;
+  height: 720px;
+  top: -8%;
+  left: -10%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 79, 216, 0.26) 0%,
+    rgba(182, 32, 255, 0.16) 38%,
+    rgba(0, 0, 0, 0) 72%
+  );
+  animation-delay: 0s;
+}
+
+.cyber-glow-2 {
+  width: 620px;
+  height: 620px;
+  top: 26%;
+  right: -8%;
+  background: radial-gradient(
+    circle,
+    rgba(124, 58, 237, 0.24) 0%,
+    rgba(217, 70, 239, 0.15) 36%,
+    rgba(0, 0, 0, 0) 74%
+  );
+  animation-delay: 1.1s;
+}
+
+.cyber-glow-3 {
+  width: 560px;
+  height: 560px;
+  bottom: -8%;
+  left: 32%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(168, 85, 247, 0.18) 30%,
+    rgba(0, 0, 0, 0) 72%
+  );
+  animation-delay: 2s;
+}
+
+.beat-ring {
+  border-radius: 9999px;
+  border: 2px solid rgba(236, 72, 153, 0.28);
+  background: radial-gradient(
+    circle,
+    rgba(236, 72, 153, 0.08) 0%,
+    rgba(168, 85, 247, 0.05) 42%,
+    rgba(0, 0, 0, 0) 72%
+  );
+  animation: beatWave 5s ease-out infinite;
+}
+
+.beat-ring-1 {
+  width: 280px;
+  height: 280px;
+  top: 12%;
+  left: 9%;
+  animation-delay: 0s;
+}
+
+.beat-ring-2 {
+  width: 240px;
+  height: 240px;
+  top: 52%;
+  right: 11%;
+  animation-delay: 1.4s;
+}
+
+.beat-ring-3 {
+  width: 320px;
+  height: 320px;
+  bottom: 8%;
+  left: 42%;
+  animation-delay: 2.7s;
+}
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    transform: scale(0.92);
+    opacity: 0.28;
+  }
+  20% {
+    transform: scale(1.03);
+    opacity: 0.42;
+  }
+  48% {
+    transform: scale(1.1);
+    opacity: 0.58;
+  }
+  72% {
+    transform: scale(0.98);
+    opacity: 0.34;
+  }
+}
+
+@keyframes beatWave {
+  0% {
+    transform: scale(0.55);
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.42;
+  }
+  100% {
+    transform: scale(2.9);
+    opacity: 0;
+  }
+}
+
+@keyframes gridDrift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-20px, 14px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
