@@ -5,7 +5,7 @@ import TimelineSection from "@/components/TimelineSection";
 import ContactSection from "@/components/ContactSection";
 import { Github, Linkedin } from "lucide-react";
 import SocialButton from "@/components/SocialButton";
-
+import TechSection from "@/components/TechSection";
 
 export default function HomePage() {
   return (
@@ -32,8 +32,11 @@ export default function HomePage() {
               </h1>
 
               <p className="mt-5 max-w-2xl text-lg leading-8 text-neutral-600 md:text-xl">
-                I enjoy <AnimatedWords /> intelligent digital systems combining
-                artificial intelligence, game development, and automation.
+                I enjoy the <AnimatedWords /> of intelligent digital systems that combine 
+                artificial intelligence, game development, and automation. My work explores 
+                how modern technologies - from language models and AI workflows to interactive 
+                game prototypes - can be used to build creative, efficient, and practical 
+                digital experiences.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-4">
@@ -73,6 +76,8 @@ export default function HomePage() {
         </section>
 
         <TimelineSection />
+        
+        <TechSection />
 
         {/* AI PROJECTS */}
         <section id="projects" className="mb-24">
