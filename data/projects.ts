@@ -61,7 +61,7 @@ export const gameProjects = [
   {
     slug: "lucian",
     title: "Lucian",
-    image: "/Assets/lucian.png",
+    image: "/Assets/Lucian.png",
     description:
       "Game project exploring mood, visuals, and interaction design.",
   },
