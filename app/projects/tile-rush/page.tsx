@@ -30,13 +30,65 @@ const features = [
   },
 ];
 
+const tileValues = [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024];
+const tileColors = [
+  "bg-sky-400/35",
+  "bg-sky-500/30",
+  "bg-cyan-400/35",
+  "bg-cyan-500/30",
+  "bg-blue-400/35",
+  "bg-blue-500/30",
+];
+
+const cubeSize = 62;
+
+const cubes = Array.from({ length: 80 }, (_, i) => ({
+  id: i,
+  left: `${Math.random() * 100}%`,
+  top: `${Math.random() * 100}%`,
+  delay: `${Math.random() * 4}s`,
+  duration: `${7 + Math.random() * 8}s`,
+  rotate: `${-18 + Math.random() * 36}deg`,
+  value: tileValues[Math.floor(Math.random() * tileValues.length)],
+  color: tileColors[Math.floor(Math.random() * tileColors.length)],
+  opacity: 0.35 + Math.random() * 0.25,
+}));
+
 export default function TileRushPage() {
   return (
-    <main className="min-h-screen bg-[#f7fbff]">
-      <div className="mx-auto max-w-6xl px-6 py-16">
+    <main className="relative min-h-screen overflow-hidden bg-[#f7fbff]">
+      {/* Fondo dinámico */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(56,189,248,0.20),_transparent_30%),radial-gradient(circle_at_top_right,_rgba(34,211,238,0.16),_transparent_28%),radial-gradient(circle_at_bottom,_rgba(59,130,246,0.14),_transparent_34%)]" />
+
+        {cubes.map((cube) => (
+          <div
+            key={cube.id}
+            className={`absolute flex items-center justify-center rounded-2xl border border-white/70 ${cube.color} text-[10px] font-extrabold text-sky-950/45 shadow-[0_10px_30px_rgba(14,165,233,0.10)] backdrop-blur-sm sm:text-xs`}
+            style={{
+              left: cube.left,
+              top: cube.top,
+              width: `${cubeSize}px`,
+              height: `${cubeSize}px`,
+              opacity: cube.opacity,
+              transform: `rotate(${cube.rotate})`,
+              animation: `float ${cube.duration} ease-in-out ${cube.delay} infinite`,
+            }}
+            >
+            {cube.value}
+          </div>
+        ))}
+
+        <div className="absolute left-[-120px] top-[0%] h-[280px] w-[280px] rounded-full bg-sky-300/20 blur-3xl" />
+        <div className="absolute right-[-100px] top-[28%] h-[240px] w-[240px] rounded-full bg-cyan-300/20 blur-3xl" />
+        <div className="absolute bottom-[-110px] left-[18%] h-[260px] w-[260px] rounded-full bg-blue-300/15 blur-3xl" />
+      </div>
+
+      {/* Contenido */}
+      <div className="relative z-10 mx-auto max-w-6xl px-6 py-16">
         <Link
           href="/#games"
-          className="mb-8 inline-flex items-center gap-2 rounded-full border border-neutral-300 bg-white/80 px-4 py-2 text-sm font-medium text-neutral-700 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:bg-white hover:text-neutral-900"
+          className="mb-8 inline-flex items-center gap-2 rounded-full border border-neutral-300 bg-white/85 px-4 py-2 text-sm font-medium text-neutral-700 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:bg-white hover:text-neutral-900"
         >
           <span aria-hidden="true">←</span>
           <span>Back</span>
@@ -77,7 +129,7 @@ export default function TileRushPage() {
 
         <section
           id="about"
-          className="mt-10 rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm"
+          className="mt-10 rounded-3xl border border-neutral-200 bg-white/88 p-6 shadow-sm backdrop-blur-sm"
         >
           <div className="mb-3 inline-flex rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-sm font-medium text-neutral-700">
             Overview
@@ -99,7 +151,7 @@ export default function TileRushPage() {
 
         <section
           id="features"
-          className="mt-10 rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm"
+          className="mt-10 rounded-3xl border border-neutral-200 bg-white/88 p-6 shadow-sm backdrop-blur-sm"
         >
           <div className="mb-6">
             <div className="mb-3 inline-flex rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-sm font-medium text-neutral-700">
@@ -114,7 +166,7 @@ export default function TileRushPage() {
             {features.map((feature) => (
               <article
                 key={feature.title}
-                className="rounded-3xl border border-neutral-200 bg-neutral-50 p-6 shadow-sm transition hover:-translate-y-1 hover:bg-white hover:shadow-md"
+                className="rounded-3xl border border-neutral-200 bg-neutral-50/90 p-6 shadow-sm transition hover:-translate-y-1 hover:bg-white hover:shadow-md"
               >
                 <div className="mb-4 text-4xl">{feature.icon}</div>
                 <h3 className="text-xl font-semibold text-neutral-900">
@@ -130,7 +182,7 @@ export default function TileRushPage() {
 
         <section
           id="howto"
-          className="mt-10 rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm"
+          className="mt-10 rounded-3xl border border-neutral-200 bg-white/88 p-6 shadow-sm backdrop-blur-sm"
         >
           <div className="mb-3 inline-flex rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-sm font-medium text-neutral-700">
             How to play
@@ -204,7 +256,7 @@ export default function TileRushPage() {
 
         <section
           id="screens"
-          className="mt-10 rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm"
+          className="mt-10 rounded-3xl border border-neutral-200 bg-white/88 p-6 shadow-sm backdrop-blur-sm"
         >
           <div className="mb-6">
             <div className="mb-3 inline-flex rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-sm font-medium text-neutral-700">
@@ -239,7 +291,7 @@ export default function TileRushPage() {
 
         <section
           id="contact"
-          className="mt-10 rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm"
+          className="mt-10 rounded-3xl border border-neutral-200 bg-white/88 p-6 shadow-sm backdrop-blur-sm"
         >
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>

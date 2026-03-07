@@ -1,4 +1,121 @@
 import Link from "next/link";
+import FbxViewer from "@/components/FbxViewer";
+
+
+const characters3D = [
+  {
+    name: "Lucian",
+    file: "/Assets/Lucian/lucianFinal.fbx",
+    description:
+      "A fragile and introspective protagonist shaped by uncertainty and quiet determination.",
+    bgClass: "bg-[radial-gradient(circle_at_top,_#ffffff,_#f1f3f5)]",
+  },
+  {
+    name: "Milo",
+    file: "/Assets/Lucian/miloFinal.fbx",
+    description:
+      "Quick-witted and energetic, Milo brings chaos, humor, and relentless curiosity.",
+    bgClass: "bg-[radial-gradient(circle_at_top,_#ffffff,_#eef1f4)]",
+  },
+  {
+    name: "Mirelda",
+    file: "/Assets/Lucian/mireldaFinal.fbx",
+    description:
+      "A mysterious matriarch whose calm authority hides a deep intuitive power.",
+    bgClass: "bg-[radial-gradient(circle_at_top,_#ffffff,_#f2f2f2)]",
+  },
+  {
+    name: "Tug",
+    file: "/Assets/Lucian/tugFinal.fbx",
+    description:
+      "A strong and loyal protector whose warm nature balances his imposing strength.",
+    bgClass: "bg-[radial-gradient(circle_at_top,_#ffffff,_#f3f4f6)]",
+  },
+  {
+    name: "Tullio",
+    file: "/Assets/Lucian/tullioFinal.fbx",
+    description:
+      "An eccentric inventor with a sharp mind and an absent-minded charm.",
+    bgClass: "bg-[radial-gradient(circle_at_top,_#ffffff,_#f0f2f4)]",
+  },
+  {
+    name: "Umbrálido",
+    file: "/Assets/Lucian/umbralido.fbx",
+    description:
+      "A disturbing creature presence connected to the dark forces surrounding Dustville.",
+    bgClass: "bg-[radial-gradient(circle_at_top,_#fcfcfc,_#eceff1)]",
+  },
+  {
+    name: "Velka",
+    file: "/Assets/Lucian/velkaFinal.fbx",
+    description:
+      "Quiet, enigmatic, and emotionally distant, Velka carries a powerful inner world.",
+    bgClass: "bg-[radial-gradient(circle_at_top,_#ffffff,_#f4f5f7)]",
+  },
+];
+
+const renders = [
+  {
+    src: "/Assets/Lucian/renders/Lucian1.png",
+    title: "Lucian Portrait I",
+    character: "Lucian",
+  },
+  {
+    src: "/Assets/Lucian/renders/Lucian2.png",
+    title: "Lucian Portrait II",
+    character: "Lucian",
+  },
+  {
+    src: "/Assets/Lucian/renders/lucianFinal21.png",
+    title: "Lucian Final Render I",
+    character: "Lucian",
+  },
+  {
+    src: "/Assets/Lucian/renders/lucianFinal31.png",
+    title: "Lucian Final Render II",
+    character: "Lucian",
+  },
+  {
+    src: "/Assets/Lucian/renders/miloFinal.png",
+    title: "Milo Render I",
+    character: "Milo",
+  },
+  {
+    src: "/Assets/Lucian/renders/miloFinal3.png",
+    title: "Milo Render II",
+    character: "Milo",
+  },
+  {
+    src: "/Assets/Lucian/renders/miloFinal5.png",
+    title: "Milo Render III",
+    character: "Milo",
+  },
+  {
+    src: "/Assets/Lucian/renders/tugFinal.png",
+    title: "Tug Render I",
+    character: "Tug",
+  },
+  {
+    src: "/Assets/Lucian/renders/tugFinal1112.png",
+    title: "Tug Render II",
+    character: "Tug",
+  },
+  {
+    src: "/Assets/Lucian/renders/tullioFinal4.png",
+    title: "Tullio Render",
+    character: "Tullio",
+  },
+  {
+    src: "/Assets/Lucian/renders/tullioIdle.png",
+    title: "Tullio Idle Pose",
+    character: "Tullio",
+  },
+  {
+    src: "/Assets/Lucian/renders/velkafinal23.png",
+    title: "Velka Render",
+    character: "Velka",
+  },
+];
 
 const highlights = [
   "Narrative-driven experience",
@@ -70,6 +187,27 @@ export default function LucianPage() {
                 </a>
 
                 <a
+                  href="#models3d"
+                  className="rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/10"
+                >
+                  View 3D Models
+                </a>
+
+                <a
+                  href="#renders"
+                  className="rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/10"
+                >
+                  View Renders
+                </a>
+
+                <a
+                  href="#video"
+                  className="rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/10"
+                >
+                  Watch Video
+                </a>
+
+                <a
                   href="#details"
                   className="rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/10"
                 >
@@ -93,6 +231,92 @@ export default function LucianPage() {
             </div>
           </div>
         </section>
+      
+        <section
+          id="models3d"
+          className="mt-10 rounded-[2rem] border border-white/10 bg-gradient-to-br from-[#101019] to-[#171726] p-6 shadow-sm"
+        >
+          <div className="mb-6">
+            <div className="mb-3 inline-flex rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm font-medium text-white/70">
+              3D Models
+            </div>
+
+            <h2 className="text-3xl font-bold tracking-tight text-white">
+              Character Viewer
+            </h2>
+
+            <p className="mt-3 max-w-3xl leading-8 text-white/70">
+              Explore the characters of Lucian in 3D. Rotate and inspect each model
+              directly in the browser.
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {characters3D.map((character) => (
+              <article
+                key={character.name}
+                className="rounded-[1.5rem] border border-white/10 bg-white/5 p-4 backdrop-blur-sm"
+              >
+                <FbxViewer path={character.file} className={character.bgClass} />
+                
+                <div className="mt-4">
+                  <h3 className="text-xl font-semibold text-white">
+                    {character.name}
+                  </h3>
+                  <p className="mt-2 leading-7 text-white/65">
+                    {character.description}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+        
+        <section
+            id="renders"
+            className="mt-10 rounded-[2rem] border border-white/10 bg-gradient-to-br from-[#101019] to-[#171726] p-6 shadow-sm"
+          >
+            <div className="mb-6">
+              <div className="mb-3 inline-flex rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm font-medium text-white/70">
+                Character Renders
+              </div>
+
+              <h2 className="text-3xl font-bold tracking-tight text-white">
+                Render Gallery
+              </h2>
+
+              <p className="mt-3 max-w-3xl leading-8 text-white/70">
+                A curated selection of character renders showcasing silhouette, materials,
+                expressions, and the visual identity developed for Lucian.
+              </p>
+            </div>
+
+            <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+              {renders.map((render) => (
+                <article
+                  key={render.src}
+                  className="group overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/5 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.07]"
+                >
+                  <div className="relative aspect-[4/5] overflow-hidden bg-white/5">
+                    <img
+                      src={render.src}
+                      alt={render.title}
+                      className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                    />
+                  </div>
+
+                  <div className="p-4">
+                    <p className="text-sm font-medium uppercase tracking-[0.14em] text-violet-200/70">
+                      {render.character}
+                    </p>
+                    <h3 className="mt-2 text-lg font-semibold text-white">
+                      {render.title}
+                    </h3>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
 
         <section
           id="artbook"
