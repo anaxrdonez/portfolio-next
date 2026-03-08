@@ -1,8 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { Silkscreen } from "next/font/google";
 import { useEffect, useState } from "react";
 import DownloadRequestForm from "@/components/DownloadRequestForm";
+
+const silkscreen = Silkscreen({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
 
 type SpriteAnimationProps = {
   frames: string[];
@@ -93,41 +99,41 @@ function ImageCarousel({
   if (!images.length) return null;
 
   return (
-    <div className="relative overflow-hidden rounded-[1.75rem] border border-neutral-200 bg-neutral-100 shadow-sm">
+    <div className="relative overflow-hidden rounded-md border-4 border-[#4a3322] bg-[#e9d4a9] shadow-[6px_6px_0_#4a3322]">
       <div className="aspect-[16/9] w-full">
         <img
           src={images[current]}
           alt={`${alt} ${current + 1}`}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover pixelated"
         />
       </div>
 
       <button
         type="button"
         onClick={goToPrevious}
-        className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-black/55 px-3 py-2 text-sm font-medium text-white backdrop-blur transition hover:bg-black/75"
+        className={`${silkscreen.className} absolute left-3 top-1/2 -translate-y-1/2 rounded-md border-2 border-[#4a3322] bg-[#ffe39a] px-3 py-2 text-xs text-[#2b1d12] shadow-[3px_3px_0_#4a3322] transition hover:-translate-y-[52%] hover:bg-[#ffecb8]`}
         aria-label="Previous image"
       >
-        ←
+        ◀
       </button>
 
       <button
         type="button"
         onClick={goToNext}
-        className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-black/55 px-3 py-2 text-sm font-medium text-white backdrop-blur transition hover:bg-black/75"
+        className={`${silkscreen.className} absolute right-3 top-1/2 -translate-y-1/2 rounded-md border-2 border-[#4a3322] bg-[#ffe39a] px-3 py-2 text-xs text-[#2b1d12] shadow-[3px_3px_0_#4a3322] transition hover:-translate-y-[52%] hover:bg-[#ffecb8]`}
         aria-label="Next image"
       >
-        →
+        ▶
       </button>
 
-      <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2 rounded-full border border-white/15 bg-black/35 px-3 py-2 backdrop-blur">
+      <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2 rounded-md border-2 border-[#4a3322] bg-[#f8ecd4]/95 px-3 py-2 shadow-[3px_3px_0_#4a3322]">
         {images.map((_, index) => (
           <button
             key={index}
             type="button"
             onClick={() => setCurrent(index)}
-            className={`h-2.5 w-2.5 rounded-full transition ${
-              current === index ? "bg-white" : "bg-white/40"
+            className={`h-3 w-3 border-2 border-[#4a3322] ${
+              current === index ? "bg-[#d9a441]" : "bg-[#fff3cc]"
             }`}
             aria-label={`Go to image ${index + 1}`}
           />
@@ -136,6 +142,17 @@ function ImageCarousel({
     </div>
   );
 }
+
+const panelClass =
+  "rounded-md border-4 border-[#4a3322] bg-[#f8ecd4] p-6 shadow-[6px_6px_0_#4a3322]";
+const smallPanelClass =
+  "rounded-md border-4 border-[#4a3322] bg-[#f3dfbb] p-5 shadow-[4px_4px_0_#4a3322] transition hover:-translate-y-1 hover:bg-[#fae8c5] hover:shadow-[6px_6px_0_#4a3322]";
+const badgeClass =
+  "inline-flex rounded-md border-2 border-[#4a3322] bg-[#ffe39a] px-3 py-1 text-xs uppercase tracking-[0.18em] text-[#3a2818]";
+const buttonPrimaryClass =
+  "rounded-md border-4 border-[#4a3322] bg-[#d9a441] px-5 py-3 text-sm font-bold text-[#2b1d12] shadow-[4px_4px_0_#4a3322] transition hover:-translate-y-0.5 hover:bg-[#e5b34f] active:translate-y-[2px] active:shadow-[2px_2px_0_#4a3322]";
+const buttonSecondaryClass =
+  "rounded-md border-4 border-[#4a3322] bg-[#fff1c7] px-5 py-3 text-sm font-bold text-[#2b1d12] shadow-[4px_4px_0_#4a3322] transition hover:-translate-y-0.5 hover:bg-[#fff5d9] active:translate-y-[2px] active:shadow-[2px_2px_0_#4a3322]";
 
 const dipperFrames = [
   "/Assets/gravityfalls/DIPPER/marron/DIPPER MARRON/derecha_izq/d1m.png",
@@ -161,25 +178,6 @@ const mabelWalkRightFrames = [
   "/Assets/gravityfalls/MABEL/Caminando derecha/derecha8.png",
   "/Assets/gravityfalls/MABEL/Caminando derecha/derecha9.png",
   "/Assets/gravityfalls/MABEL/Caminando derecha/derecha10.png",
-];
-
-const catWalkFrames = [
-  "/Assets/gravityfalls/GATO/andar/sacha-riviere-9-marche-0.png",
-  "/Assets/gravityfalls/GATO/andar/sacha-riviere-9-marche-1.png",
-  "/Assets/gravityfalls/GATO/andar/sacha-riviere-9-marche-2.png",
-  "/Assets/gravityfalls/GATO/andar/sacha-riviere-9-marche-3.png",
-  "/Assets/gravityfalls/GATO/andar/sacha-riviere-9-marche-4.png",
-  "/Assets/gravityfalls/GATO/andar/sacha-riviere-9-marche-5.png",
-  "/Assets/gravityfalls/GATO/andar/sacha-riviere-9-marche-6.png",
-  "/Assets/gravityfalls/GATO/andar/sacha-riviere-9-marche-7.png",
-  "/Assets/gravityfalls/GATO/andar/sacha-riviere-9-marche-8.png",
-  "/Assets/gravityfalls/GATO/andar/sacha-riviere-9-marche-9.png",
-  "/Assets/gravityfalls/GATO/andar/sacha-riviere-9-marche-10.png",
-  "/Assets/gravityfalls/GATO/andar/sacha-riviere-9-marche-11.png",
-  "/Assets/gravityfalls/GATO/andar/sacha-riviere-9-marche-12.png",
-  "/Assets/gravityfalls/GATO/andar/sacha-riviere-9-marche-13.png",
-  "/Assets/gravityfalls/GATO/andar/sacha-riviere-9-marche-14.png",
-  "/Assets/gravityfalls/GATO/andar/sacha-riviere-9-marche-15.png",
 ];
 
 const witchFrames = [
@@ -242,17 +240,17 @@ const featureCards = [
   {
     title: "Narrative Adventure",
     description:
-      "A story-driven prototype inspired by the mystery, humor, and charm of Gravity Falls.",
+      "A mystery-driven prototype inspired by Gravity Falls, built around playful storytelling and readable progression.",
   },
   {
     title: "Exploration & Interaction",
     description:
-      "Players inspect rooms, talk to characters, and search for clues hidden across different environments.",
+      "Players inspect rooms, talk to characters, and search for useful clues across different locations.",
   },
   {
     title: "Light Puzzle Solving",
     description:
-      "The progression is built around simple readable puzzles, object use, and dialogue-based guidance.",
+      "Progression is based on simple adventure-game logic: observation, item use, and dialogue-guided actions.",
   },
 ];
 
@@ -261,25 +259,25 @@ const gameplaySteps = [
     step: "01",
     title: "Explore",
     description:
-      "Move through each location and inspect the environment to discover clues, props, and interactive elements.",
+      "Move through each area and inspect the environment for clues, objects, and interactive details.",
   },
   {
     step: "02",
     title: "Talk to Characters",
     description:
-      "NPCs provide information, hints, and direction while helping build the world and tone of the adventure.",
+      "NPC dialogue provides guidance, flavor, and the information needed to understand the next objective.",
   },
   {
     step: "03",
     title: "Collect & Use Items",
     description:
-      "Pick up useful objects and use them in the right context to unlock new paths and solve progression puzzles.",
+      "Find useful objects and use them in the right context to solve small progression puzzles.",
   },
   {
     step: "04",
     title: "Recover the Books",
     description:
-      "Advance chapter by chapter by finding the three magical books needed to rescue Mabel.",
+      "Advance chapter by chapter by obtaining the three magical books needed to rescue Mabel.",
   },
 ];
 
@@ -287,17 +285,17 @@ const chapterCards = [
   {
     title: "Chapter 1 — Stan’s House",
     description:
-      "The adventure begins with investigation, dialogue, and clue reading inside a room full of suspicious details and hidden answers.",
+      "The opening chapter introduces investigation, clue reading, and object-based progression inside a suspicious interior space.",
   },
   {
     title: "Chapter 2 — Botanical Area",
     description:
-      "The player explores a new environment, interacts with characters, and uses objects to complete a small environmental puzzle.",
+      "A new environment focused on interaction, environmental observation, and a simple item exchange puzzle.",
   },
   {
     title: "Chapter 3 — Workshop",
     description:
-      "The final progression segment introduces a more crafted puzzle flow based on gathering items and using them correctly.",
+      "The final progression segment combines collected items and a more deliberate puzzle flow before the ending.",
   },
 ];
 
@@ -315,112 +313,76 @@ const recruiterCards = [
   {
     title: "Visual Presentation",
     description:
-      "Pixel-art-inspired characters, animated sprites, and stylized room-based environments.",
+      "Pixel-art-inspired sprites, animated characters, and room-based environments.",
   },
   {
     title: "Cross-Disciplinary Work",
     description:
-      "A mix of storytelling, visual design, interaction planning, and prototype presentation.",
+      "A blend of storytelling, visual design, interaction planning, and prototype presentation.",
   },
 ];
 
 const spriteCards = [
-  {
-    title: "Dipper",
-    frames: dipperFrames,
-    fps: 8,
-    size: 220,
-  },
-  {
-    title: "Mabel",
-    frames: mabelWalkRightFrames,
-    fps: 8,
-    size: 220,
-  },
-  {
-    title: "Cat",
-    frames: catWalkFrames,
-    fps: 10,
-    size: 220,
-  },
-  {
-    title: "Witch",
-    frames: witchFrames,
-    fps: 7,
-    size: 220,
-  },
-  {
-    title: "Crash Bandicoot",
-    frames: crashFrames,
-    fps: 7,
-    size: 220,
-  },
-  {
-    title: "El Yesca",
-    frames: elYescaFrames,
-    fps: 10,
-    size: 220,
-  },
+  { title: "Dipper", frames: dipperFrames, fps: 8, size: 220 },
+  { title: "Mabel", frames: mabelWalkRightFrames, fps: 8, size: 220 },
+  { title: "Witch", frames: witchFrames, fps: 7, size: 220 },
+  { title: "Crash Bandicoot", frames: crashFrames, fps: 7, size: 220 },
+  { title: "El Yesca", frames: elYescaFrames, fps: 10, size: 220 },
 ];
 
 export default function FindingMabelPage() {
   return (
-    <main className="relative mx-auto max-w-6xl px-6 py-16">
-      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute left-[-120px] top-10 h-72 w-72 rounded-full bg-amber-300/20 blur-3xl" />
-        <div className="absolute right-[-80px] top-44 h-80 w-80 rounded-full bg-orange-300/20 blur-3xl" />
-        <div className="absolute bottom-20 left-[10%] h-72 w-72 rounded-full bg-yellow-200/25 blur-3xl" />
-      </div>
+    <main className="relative min-h-screen overflow-hidden bg-[#f3e2bf] text-[#3a2818]">
+      <div className="pointer-events-none absolute inset-0 -z-10 [background-image:linear-gradient(rgba(74,51,34,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(74,51,34,0.06)_1px,transparent_1px)] [background-size:18px_18px]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(255,245,214,0.8),_transparent_45%),radial-gradient(circle_at_bottom,_rgba(217,164,65,0.16),_transparent_35%)]" />
+
+      <div className="mx-auto max-w-6xl px-6 py-16">
 
       <Link
         href="/#games"
-        className="mb-8 inline-flex items-center gap-2 rounded-full border border-neutral-300 bg-white/80 px-4 py-2 text-sm font-medium text-neutral-700 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:bg-white hover:text-neutral-900"
+        className={`${silkscreen.className} mb-8 inline-flex items-center gap-2 rounded-md border-4 border-[#4a3322] bg-[#fff1c7] px-4 py-2 text-xs text-[#2b1d12] shadow-[4px_4px_0_#4a3322] transition hover:-translate-y-0.5 hover:bg-[#fff6dd] active:translate-y-[2px] active:shadow-[2px_2px_0_#4a3322]`}
       >
         <span aria-hidden="true">←</span>
         <span>Back</span>
       </Link>
 
-      <section className="overflow-hidden rounded-[2rem] border border-amber-200/60 bg-[radial-gradient(circle_at_top,_#fff2cc,_#ffe2b8_42%,_#ffd6a5_100%)] shadow-lg">
+      <section className="overflow-hidden rounded-md border-4 border-[#4a3322] bg-[linear-gradient(180deg,#f8df9a_0%,#efc36b_48%,#cf8d46_100%)] shadow-[8px_8px_0_#4a3322]">
         <div className="grid gap-10 px-8 py-12 md:px-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
           <div>
-            <div className="mb-4 inline-flex rounded-full border border-amber-300 bg-white/60 px-3 py-1 text-sm font-medium text-amber-900 backdrop-blur">
-              Narrative Adventure Demo
+            <div className={`${silkscreen.className} ${badgeClass}`}>
+              Pixel Adventure Demo
             </div>
 
-            <h1 className="text-4xl font-bold tracking-tight text-neutral-900 md:text-6xl">
+            <h1
+              className={`${silkscreen.className} mt-5 text-4xl leading-tight text-[#2f1e12] md:text-6xl`}
+            >
               Finding Mabel
             </h1>
 
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-neutral-700 md:text-xl">
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-[#4a3322] md:text-xl">
               My first adventure game prototype, inspired by the mystery and
-              humor of Gravity Falls. The project combines exploration, dialogue,
-              item-based interaction, and light puzzle solving in a story where
-              Dipper must recover three magical books to rescue Mabel.
+              humor of Gravity Falls. The project combines exploration,
+              dialogue, item-based interaction, and light puzzle solving in a
+              story where Dipper must recover three magical books to rescue
+              Mabel.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href="#video"
-                className="rounded-xl bg-neutral-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-neutral-800"
-              >
-                Watch intro
+              <a href="#video" className={buttonPrimaryClass}>
+                Watch Intro
               </a>
-
-              <a
-                href="#gallery"
-                className="rounded-xl border border-neutral-300 bg-white/70 px-5 py-3 text-sm font-semibold text-neutral-900 transition hover:-translate-y-0.5 hover:bg-white"
-              >
-                View rooms
+              <a href="#gallery" className={buttonSecondaryClass}>
+                View Rooms
               </a>
             </div>
           </div>
 
           <div className="flex justify-center">
-            <div className="overflow-hidden rounded-[1.75rem] border border-neutral-200 bg-white p-4 shadow-lg">
+            <div className="rounded-md border-4 border-[#4a3322] bg-[#f8ecd4] p-3 shadow-[6px_6px_0_#4a3322]">
               <img
                 src="/Assets/gravityfalls/cover.png"
                 alt="Finding Mabel cover art"
-                className="max-h-[420px] w-auto object-contain"
+                className="max-h-[420px] w-auto object-contain pixelated"
               />
             </div>
           </div>
@@ -429,75 +391,71 @@ export default function FindingMabelPage() {
 
       <section className="mt-10 grid gap-6 md:grid-cols-3">
         {featureCards.map((card) => (
-          <article
-            key={card.title}
-            className="rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
-          >
-            <h2 className="text-xl font-semibold text-neutral-900">
+          <article key={card.title} className={smallPanelClass}>
+            <h2
+              className={`${silkscreen.className} text-lg leading-tight text-[#2f1e12]`}
+            >
               {card.title}
             </h2>
-            <p className="mt-3 leading-7 text-neutral-600">
-              {card.description}
-            </p>
+            <p className="mt-3 leading-7 text-[#4a3322]">{card.description}</p>
           </article>
         ))}
       </section>
 
-      <section className="mt-10 rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm">
-        <div className="mb-6">
-          <div className="mb-3 inline-flex rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-sm font-medium text-neutral-700">
-            Story Premise
-          </div>
+      <section className={`mt-10 ${panelClass}`}>
+        <div className={`${silkscreen.className} ${badgeClass}`}>Story Log</div>
 
-          <h2 className="text-3xl font-bold tracking-tight text-neutral-900">
-            A pixelated mystery adventure
-          </h2>
+        <h2
+          className={`${silkscreen.className} mt-4 text-3xl leading-tight text-[#2f1e12]`}
+        >
+          A pixelated mystery adventure
+        </h2>
 
-          <p className="mt-4 max-w-4xl leading-7 text-neutral-600">
-            The story begins when Dipper becomes trapped inside a strange
-            pixelated game world. Mabel has disappeared, and the only way to
-            bring her back is to recover three magical books hidden across
-            different locations.
-          </p>
+        <div className="mt-4 h-2 w-24 bg-[#4a3322]" />
 
-          <p className="mt-3 max-w-4xl leading-7 text-neutral-600">
-            From there, the player explores rooms, interacts with characters,
-            finds objects, and solves small puzzles while progressing through a
-            playful adventure with a nostalgic cartoon tone.
-          </p>
-        </div>
+        <p className="mt-4 max-w-4xl leading-7 text-[#4a3322]">
+          The story begins when Dipper becomes trapped inside a strange
+          pixelated game world. Mabel has disappeared, and the only way to
+          bring her back is to recover three magical books hidden across
+          different locations.
+        </p>
+
+        <p className="mt-3 max-w-4xl leading-7 text-[#4a3322]">
+          From there, the player explores rooms, interacts with characters,
+          finds objects, and solves small puzzles while progressing through a
+          playful adventure with a nostalgic cartoon tone.
+        </p>
       </section>
 
-      <section className="mt-10 rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm">
-        <div className="mb-6">
-          <div className="mb-3 inline-flex rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-sm font-medium text-neutral-700">
-            How to Play
-          </div>
+      <section className={`mt-10 ${panelClass}`}>
+        <div className={`${silkscreen.className} ${badgeClass}`}>How to Play</div>
 
-          <h2 className="text-3xl font-bold tracking-tight text-neutral-900">
-            Core gameplay loop
-          </h2>
+        <h2
+          className={`${silkscreen.className} mt-4 text-3xl leading-tight text-[#2f1e12]`}
+        >
+          Core gameplay loop
+        </h2>
 
-          <p className="mt-3 max-w-3xl leading-7 text-neutral-600">
-            Finding Mabel is built around readable adventure-game logic:
-            exploration, dialogue, item interaction, and simple progression
-            puzzles.
-          </p>
-        </div>
+        <p className="mt-3 max-w-3xl leading-7 text-[#4a3322]">
+          Finding Mabel is built around readable adventure-game logic:
+          exploration, dialogue, item interaction, and simple progression
+          puzzles.
+        </p>
 
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {gameplaySteps.map((item) => (
-            <article
-              key={item.step}
-              className="rounded-2xl border border-neutral-200 bg-neutral-50 p-5 transition hover:-translate-y-1 hover:bg-white hover:shadow-sm"
-            >
-              <span className="text-sm font-semibold tracking-[0.18em] text-amber-700">
+            <article key={item.step} className={smallPanelClass}>
+              <span
+                className={`${silkscreen.className} text-xs tracking-[0.2em] text-[#9b5d1b]`}
+              >
                 {item.step}
               </span>
-              <h3 className="mt-2 text-lg font-semibold text-neutral-900">
+              <h3
+                className={`${silkscreen.className} mt-2 text-base leading-tight text-[#2f1e12]`}
+              >
                 {item.title}
               </h3>
-              <p className="mt-2 leading-7 text-neutral-600">
+              <p className="mt-2 leading-7 text-[#4a3322]">
                 {item.description}
               </p>
             </article>
@@ -505,27 +463,26 @@ export default function FindingMabelPage() {
         </div>
       </section>
 
-      <section className="mt-10 rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm">
-        <div className="mb-6">
-          <div className="mb-3 inline-flex rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-sm font-medium text-neutral-700">
-            Chapter Design
-          </div>
-
-          <h2 className="text-3xl font-bold tracking-tight text-neutral-900">
-            Three locations, three magical books
-          </h2>
+      <section className={`mt-10 ${panelClass}`}>
+        <div className={`${silkscreen.className} ${badgeClass}`}>
+          Quest Structure
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <h2
+          className={`${silkscreen.className} mt-4 text-3xl leading-tight text-[#2f1e12]`}
+        >
+          Three locations, three magical books
+        </h2>
+
+        <div className="mt-8 grid gap-6 md:grid-cols-3">
           {chapterCards.map((chapter) => (
-            <article
-              key={chapter.title}
-              className="rounded-2xl border border-neutral-200 bg-neutral-50 p-5 transition hover:-translate-y-1 hover:bg-white hover:shadow-sm"
-            >
-              <h3 className="text-xl font-semibold text-neutral-900">
+            <article key={chapter.title} className={smallPanelClass}>
+              <h3
+                className={`${silkscreen.className} text-base leading-tight text-[#2f1e12]`}
+              >
                 {chapter.title}
               </h3>
-              <p className="mt-3 leading-7 text-neutral-600">
+              <p className="mt-3 leading-7 text-[#4a3322]">
                 {chapter.description}
               </p>
             </article>
@@ -533,33 +490,32 @@ export default function FindingMabelPage() {
         </div>
       </section>
 
-      <section className="mt-10 rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm">
-        <div className="mb-6">
-          <div className="mb-3 inline-flex rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-sm font-medium text-neutral-700">
-            Character Sprite Animations
-          </div>
-
-          <h2 className="text-3xl font-bold tracking-tight text-neutral-900">
-            Animated characters and creatures
-          </h2>
-
-          <p className="mt-3 max-w-3xl leading-7 text-neutral-600">
-            These sprite sequences showcase some of the characters and enemies
-            created for the prototype, presented as frame-by-frame animations.
-          </p>
+      <section className={`mt-10 ${panelClass}`}>
+        <div className={`${silkscreen.className} ${badgeClass}`}>
+          Character Sprites
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+        <h2
+          className={`${silkscreen.className} mt-4 text-3xl leading-tight text-[#2f1e12]`}
+        >
+          Animated characters and creatures
+        </h2>
+
+        <p className="mt-3 max-w-3xl leading-7 text-[#4a3322]">
+          These sprite sequences showcase some of the characters and enemies
+          created for the prototype, presented as frame-by-frame animations.
+        </p>
+
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
           {spriteCards.map((sprite) => (
-            <article
-              key={sprite.title}
-              className="rounded-3xl border border-neutral-200 bg-neutral-50 p-5 shadow-sm transition hover:-translate-y-1 hover:bg-white hover:shadow-md"
-            >
-              <h3 className="mb-4 text-xl font-semibold text-neutral-900">
+            <article key={sprite.title} className={smallPanelClass}>
+              <h3
+                className={`${silkscreen.className} mb-4 text-base leading-tight text-[#2f1e12]`}
+              >
                 {sprite.title}
               </h3>
 
-              <div className="flex justify-center rounded-2xl border border-neutral-200 bg-white p-4">
+              <div className="flex justify-center rounded-md border-4 border-[#4a3322] bg-[#fff5de] p-4 shadow-[3px_3px_0_#4a3322]">
                 <SpriteAnimation
                   frames={sprite.frames}
                   alt={`${sprite.title} animation`}
@@ -573,69 +529,63 @@ export default function FindingMabelPage() {
         </div>
       </section>
 
-      <section
-        id="video"
-        className="mt-10 rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm"
-      >
-        <div className="mb-5">
-          <div className="mb-3 inline-flex rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-sm font-medium text-neutral-700">
-            Intro Video
-          </div>
+      <section id="video" className={`mt-10 ${panelClass}`}>
+        <div className={`${silkscreen.className} ${badgeClass}`}>Intro Video</div>
 
-          <h2 className="text-3xl font-bold tracking-tight text-neutral-900">
-            Project introduction
-          </h2>
+        <h2
+          className={`${silkscreen.className} mt-4 text-3xl leading-tight text-[#2f1e12]`}
+        >
+          Project introduction
+        </h2>
 
-          <p className="mt-3 max-w-3xl leading-7 text-neutral-600">
-            A short video presenting the atmosphere, visual direction, and
-            narrative setup of the adventure demo.
-          </p>
-        </div>
+        <p className="mt-3 max-w-3xl leading-7 text-[#4a3322]">
+          A short video presenting the atmosphere, visual direction, and
+          narrative setup of the adventure demo.
+        </p>
 
-        <div className="overflow-hidden rounded-[1.5rem] border border-neutral-200 bg-neutral-950 shadow-sm">
-          <video controls className="w-full" preload="metadata">
+        <div className="mt-6 overflow-hidden rounded-md border-4 border-[#4a3322] bg-[#2b1d12] shadow-[6px_6px_0_#4a3322]">
+          <video controls className="w-full pixelated" preload="metadata">
             <source src="/Assets/gravityfalls/videointro.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
       </section>
 
-      <section
-        id="gallery"
-        className="mt-10 rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm"
-      >
-        <div className="mb-6">
-          <div className="mb-3 inline-flex rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-sm font-medium text-neutral-700">
-            Environment Gallery
-          </div>
-
-          <h2 className="text-3xl font-bold tracking-tight text-neutral-900">
-            Room showcase
-          </h2>
-
-          <p className="mt-3 max-w-3xl leading-7 text-neutral-600">
-            A selection of rooms from the game, presented in a carousel to show
-            the overall visual style and environment variety of the prototype.
-          </p>
+      <section id="gallery" className={`mt-10 ${panelClass}`}>
+        <div className={`${silkscreen.className} ${badgeClass}`}>
+          Environment Gallery
         </div>
 
-        <ImageCarousel
-          images={roomImages}
-          alt="Finding Mabel room"
-          autoPlay={true}
-          interval={3500}
-        />
+        <h2
+          className={`${silkscreen.className} mt-4 text-3xl leading-tight text-[#2f1e12]`}
+        >
+          Room showcase
+        </h2>
+
+        <p className="mt-3 max-w-3xl leading-7 text-[#4a3322]">
+          A selection of rooms from the game, presented in a carousel to show
+          the visual style and environment variety of the prototype.
+        </p>
+
+        <div className="mt-6">
+          <ImageCarousel
+            images={roomImages}
+            alt="Finding Mabel room"
+            autoPlay={true}
+            interval={3500}
+          />
+        </div>
 
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {roomImages.map((image) => (
             <div
               key={image}
-              className="overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-50 shadow-sm"
+              className="overflow-hidden rounded-md border-4 border-[#4a3322] bg-[#fff5de] shadow-[4px_4px_0_#4a3322]"
             >
               <img
                 src={image}
                 alt="Finding Mabel room preview"
-                className="h-32 w-full object-cover transition duration-300 hover:scale-[1.03]"
+                className="h-32 w-full object-cover pixelated transition duration-300 hover:scale-[1.03]"
               />
             </div>
           ))}
@@ -643,47 +593,49 @@ export default function FindingMabelPage() {
       </section>
 
       <section className="mt-10 grid gap-6 md:grid-cols-2">
-        <article className="rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm">
-          <div className="mb-3 inline-flex rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-sm font-medium text-neutral-700">
+        <article className={panelClass}>
+          <div className={`${silkscreen.className} ${badgeClass}`}>
             Puzzle Design
           </div>
 
-          <h2 className="text-3xl font-bold tracking-tight text-neutral-900">
+          <h2
+            className={`${silkscreen.className} mt-4 text-3xl leading-tight text-[#2f1e12]`}
+          >
             Readable adventure-game logic
           </h2>
 
-          <p className="mt-3 leading-7 text-neutral-600">
+          <p className="mt-3 leading-7 text-[#4a3322]">
             The prototype focuses on accessible puzzle design based on
             observation, dialogue hints, item collection, and contextual object
             use. The goal was to make progression feel clear while maintaining
             the playful tone of the story.
           </p>
 
-          <div className="mt-5 space-y-3 text-neutral-600">
-            <p>• Environmental clue reading</p>
-            <p>• Inventory-based progression</p>
-            <p>• Dialogue-guided objectives</p>
-            <p>• Simple multi-step puzzle flow</p>
+          <div className="mt-5 space-y-3 text-[#4a3322]">
+            <p>◆ Environmental clue reading</p>
+            <p>◆ Inventory-based progression</p>
+            <p>◆ Dialogue-guided objectives</p>
+            <p>◆ Simple multi-step puzzle flow</p>
           </div>
         </article>
 
-        <article className="rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm">
-          <div className="mb-3 inline-flex rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-sm font-medium text-neutral-700">
-            Finale
-          </div>
+        <article className={panelClass}>
+          <div className={`${silkscreen.className} ${badgeClass}`}>Finale</div>
 
-          <h2 className="text-3xl font-bold tracking-tight text-neutral-900">
+          <h2
+            className={`${silkscreen.className} mt-4 text-3xl leading-tight text-[#2f1e12]`}
+          >
             A complete narrative arc
           </h2>
 
-          <p className="mt-3 leading-7 text-neutral-600">
+          <p className="mt-3 leading-7 text-[#4a3322]">
             After collecting the three magical books, the player reaches the
             final confrontation and completes the rescue mission. This gives the
             demo a sense of closure and makes it feel like a compact but
             complete adventure rather than just a visual prototype.
           </p>
 
-          <p className="mt-3 leading-7 text-neutral-600">
+          <p className="mt-3 leading-7 text-[#4a3322]">
             The result is a small project with a clear beginning, middle, and
             end, designed to communicate narrative intent as well as gameplay
             structure.
@@ -691,65 +643,69 @@ export default function FindingMabelPage() {
         </article>
       </section>
 
-      <section className="mt-10 rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm">
-        <div className="mb-6">
-          <div className="mb-3 inline-flex rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-sm font-medium text-neutral-700">
-            Recruiter Snapshot
-          </div>
-
-          <h2 className="text-3xl font-bold tracking-tight text-neutral-900">
-            What this project demonstrates
-          </h2>
+      <section className={`mt-10 ${panelClass}`}>
+        <div className={`${silkscreen.className} ${badgeClass}`}>
+          Project Snapshot
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <h2
+          className={`${silkscreen.className} mt-4 text-3xl leading-tight text-[#2f1e12]`}
+        >
+          What this project demonstrates
+        </h2>
+
+        <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {recruiterCards.map((item) => (
-            <article
-              key={item.title}
-              className="rounded-2xl border border-neutral-200 bg-neutral-50 p-5 transition hover:-translate-y-1 hover:bg-white hover:shadow-sm"
-            >
-              <h3 className="text-lg font-semibold text-neutral-900">
+            <article key={item.title} className={smallPanelClass}>
+              <h3
+                className={`${silkscreen.className} text-sm leading-tight text-[#2f1e12]`}
+              >
                 {item.title}
               </h3>
-              <p className="mt-2 leading-7 text-neutral-600">
+              <p className="mt-2 leading-7 text-[#4a3322]">
                 {item.description}
               </p>
             </article>
           ))}
         </div>
       </section>
-        
-      <section className="mt-10 rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm">
+
+      <section className={`mt-10 ${panelClass}`}>
         <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
           <div>
-            <div className="mb-3 inline-flex rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-sm font-medium text-neutral-700">
+            <div className={`${silkscreen.className} ${badgeClass}`}>
               Playable Build
             </div>
 
-            <h2 className="text-3xl font-bold tracking-tight text-neutral-900">
+            <h2
+              className={`${silkscreen.className} mt-4 text-3xl leading-tight text-[#2f1e12]`}
+            >
               Request a download
             </h2>
 
-            <p className="mt-3 max-w-2xl leading-7 text-neutral-600">
-              The playable build of <strong>Finding Mabel</strong> is available on
-              request. If you would like to explore the prototype directly, you can
-              submit a request below.
+            <p className="mt-3 max-w-2xl leading-7 text-[#4a3322]">
+              The playable build of <strong>Finding Mabel</strong> is available
+              on request. If you would like to explore the prototype directly,
+              you can submit a request below.
             </p>
 
-            <p className="mt-3 max-w-2xl leading-7 text-neutral-600">
-              Once the request is received, I will review it and share the ZIP build
-              manually.
+            <p className="mt-3 max-w-2xl leading-7 text-[#4a3322]">
+              Once the request is received, I will review it and share the ZIP
+              build manually.
             </p>
 
-            <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-900">
+            <div className="mt-6 rounded-md border-4 border-[#4a3322] bg-[#ffe39a] p-4 text-sm leading-6 text-[#3a2818] shadow-[4px_4px_0_#4a3322]">
               This helps keep track of downloads and share the build in a more
               controlled way.
             </div>
           </div>
 
-          <DownloadRequestForm />
+          <div className="[&_form]:rounded-md [&_form]:border-4 [&_form]:border-[#4a3322] [&_form]:bg-[#f3dfbb] [&_form]:shadow-[6px_6px_0_#4a3322] [&_input]:rounded-md [&_input]:border-4 [&_input]:border-[#4a3322] [&_input]:bg-[#fff7e2] [&_input]:text-[#2f1e12] [&_textarea]:rounded-md [&_textarea]:border-4 [&_textarea]:border-[#4a3322] [&_textarea]:bg-[#fff7e2] [&_textarea]:text-[#2f1e12] [&_button]:rounded-md [&_button]:border-4 [&_button]:border-[#4a3322] [&_button]:bg-[#d9a441] [&_button]:text-[#2b1d12] [&_button]:shadow-[4px_4px_0_#4a3322] hover:[&_button]:bg-[#e5b34f]">
+            <DownloadRequestForm />
+          </div>
         </div>
       </section>
+     </div>
     </main>
   );
 }
