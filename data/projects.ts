@@ -65,4 +65,12 @@ export const gameProjects = [
     description:
       "Game project exploring mood, visuals, and interaction design.",
   },
+  {
+    slug: "finding-mabel",
+    title: "Finding Mabel",
+    description:
+      "Narrative adventure demo inspired by the universe of Gravity Falls, focused on exploration, puzzles, and character interactions.",
+    image: "/Assets/gravityfalls/cover.png",
+    tags: ["Adventure", "Puzzle", "Narrative"],
+  }
 ];
