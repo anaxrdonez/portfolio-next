@@ -1,5 +1,12 @@
 export const aiProjects = [
   {
+    slug: "gemini-confidence-inspector",
+    title: "Gemini Confidence Inspector",
+    description:
+      "Experimental project analyzing confidence signals in LLM outputs using Gemini.",
+    tag: "Research",
+  },
+  {
     slug: "uncertainty-metrics",
     title: "Uncertainty Metrics Lab",
     // image: "/Assets/uncertainty-metrics.png",
